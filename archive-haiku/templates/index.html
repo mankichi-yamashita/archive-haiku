@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>言の葉アーカイブ</title>
+
+<style>
+body {
+    font-family: "Hiragino Mincho ProN", serif;
+    background: linear-gradient(to bottom, #f5f1e6, #e8dfc7);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    max-width: 300px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #7a5c3e;
+    color: white;
+    border: none;
+}
+
+.card {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.score-bar {
+    height: 8px;
+    background: #ddd;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.score-fill {
+    height: 8px;
+    background: #b89b72;
+    border-radius: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>言の葉アーカイブ</h1>
+
+<form method="POST">
+<input type="text" name="keyword" placeholder="キーワードを入力" value="{{ keyword }}">
+<button type="submit">検索</button>
+</form>
+
+{% for r in results %}
+<div class="card">
+    <div style="font-size:18px;">{{ r.text }}</div>
+    <div class="score-bar">
+        <div class="score-fill" style="width:{{ r.score }}%"></div>
+    </div>
+    <div>俳句らしさ {{ r.score }}点</div>
+</div>
+{% endfor %}
+
+</body>
+</html>
