@@ -1,0 +1,5 @@
+flask
+requests
+mecab-python3
+unidic-lite
+gunicorn
